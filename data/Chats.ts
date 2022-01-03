@@ -12,7 +12,7 @@ export default {
 	messages: [{
 		id: 'm1',
 		content: 'How are you, Lukas!',
-		createdAt: '2020-10-10T12:48:00.000Z',
+		createdAt: '2021-12-30T12:48:00.000Z',
 		user: {
 			id: 'u1',
 			name: 'Vadim',
@@ -28,7 +28,7 @@ export default {
 	}, {
 		id: 'm3',
 		content: 'What about you?',
-		createdAt: '2020-10-03T14:49:40.000Z',
+		createdAt: '2022-01-03T14:49:40.000Z',
 		user: {
 			id: 'u2',
 			name: 'Lukas',
