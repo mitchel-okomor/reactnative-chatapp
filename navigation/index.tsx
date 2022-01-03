@@ -3,7 +3,6 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -13,13 +12,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import { View } from '../components/Themed';
-import { Octicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  Octicons,
+  MaterialCommunityIcons,
+  FontAwesome5,
+  MaterialIcons
+} from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { BottomTabNavigator } from './MainTabNavigator';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
 
 export default function Navigation({
   colorScheme
@@ -47,7 +52,7 @@ function RootNavigator() {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: Colors.light.tint,
+          backgroundColor: Colors.light.tint
         },
 
         headerTintColor: Colors.light.background,
@@ -83,13 +88,36 @@ function RootNavigator() {
         }}
       />
       <Stack.Screen
+        name='ChatRoomScreen'
+        component={ChatRoomScreen}
+        options={({ route }) => ({
+          title: route.params.name,
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: 'row',
+                width: 100,
+                justifyContent: 'space-between',
+                marginRight: 18,
+                backgroundColor: 'transparent'
+              }}
+            >
+              <FontAwesome5 name='video' size={20} color={'white'} />
+              <MaterialIcons name='call' size={22} color={'white'} />
+              <MaterialCommunityIcons
+                name='dots-vertical'
+                size={22}
+                color={'white'}
+              />
+            </View>
+          )
+        })}
+      />
+      <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name='Modal' component={ModalScreen} />
-      </Stack.Group>
     </Stack.Navigator>
   );
 }
