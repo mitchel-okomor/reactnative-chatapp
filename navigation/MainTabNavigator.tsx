@@ -14,7 +14,7 @@ import { Fontisto } from '@expo/vector-icons';
 const MainTab = createMaterialTopTabNavigator<MainTabParamList>();
 
 function TabBarIcon(props: {
-  naeme: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
@@ -55,13 +55,13 @@ export function BottomTabNavigator() {
           title: 'chats'
         }}
       />
-      <MainTab.Screen
+      {/* <MainTab.Screen
         name='Status'
         component={TabTwoScreen}
         options={{
           title: 'Status'
         }}
-      />
+      /> */}
       <MainTab.Screen
         name='Calls'
         component={TabTwoScreen}

@@ -25,6 +25,9 @@ import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { BottomTabNavigator } from './MainTabNavigator';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
+import Contacts from '../screens/ContactsScreen';
+import Login from '../screens/Login';
+import Register from '../screens/Register';
 
 export default function Navigation({
   colorScheme
@@ -50,6 +53,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator
+      initialRouteName='Login'
       screenOptions={{
         headerStyle: {
           backgroundColor: Colors.light.tint
@@ -91,7 +95,7 @@ function RootNavigator() {
         name='ChatRoomScreen'
         component={ChatRoomScreen}
         options={({ route }) => ({
-          title: route.params.name,
+          // title: route.params.name,
           headerRight: () => (
             <View
               style={{
@@ -113,6 +117,10 @@ function RootNavigator() {
           )
         })}
       />
+      <Stack.Screen name='Contacts' component={Contacts} />
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Register' component={Register} />
+
       <Stack.Screen
         name='NotFound'
         component={NotFoundScreen}
